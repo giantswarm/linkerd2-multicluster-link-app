@@ -29,4 +29,4 @@ tolerations: {}
 # Mirror to the control plane PSP resource. This requires that `enabledPSP` is
 # set to true on the extension and control plane install. Note PSP has been
 # deprecated since k8s v1.21
-enablePSP: false
+enablePSP: true
