@@ -5,7 +5,7 @@ metadata:
   name: linkerd-service-mirror-access-local-resources-{{.Values.targetClusterName}}
   labels:
     linkerd.io/extension: multicluster
-    component: service-mirror
+    linkerd.io/control-plane-component: service-mirror
     mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 rules:
 - apiGroups: [""]
@@ -21,7 +21,7 @@ metadata:
   name: linkerd-service-mirror-access-local-resources-{{.Values.targetClusterName}}
   labels:
     linkerd.io/extension: multicluster
-    component: service-mirror
+    linkerd.io/control-plane-component: service-mirror
     mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -30,16 +30,16 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: linkerd-service-mirror-{{.Values.targetClusterName}}
-  namespace: {{.Release.Namespace}}
+  namespace: {{.Values.namespace}}
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: linkerd-service-mirror-read-remote-creds-{{.Values.targetClusterName}}
-  {{ include "partials.namespace" . }}
+  namespace: {{.Values.namespace}}
   labels:
       linkerd.io/extension: multicluster
-      component: service-mirror
+      linkerd.io/control-plane-component: service-mirror
       mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 rules:
   - apiGroups: [""]
@@ -54,10 +54,10 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: linkerd-service-mirror-read-remote-creds-{{.Values.targetClusterName}}
-  {{ include "partials.namespace" . }}
+  namespace: {{.Values.namespace}}
   labels:
       linkerd.io/extension: multicluster
-      component: service-mirror
+      linkerd.io/control-plane-component: service-mirror
       mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -66,16 +66,16 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: linkerd-service-mirror-{{.Values.targetClusterName}}
-    namespace: {{.Release.Namespace}}
+    namespace: {{.Values.namespace}}
 ---
 kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: linkerd-service-mirror-{{.Values.targetClusterName}}
-  {{ include "partials.namespace" . }}
+  namespace: {{.Values.namespace}}
   labels:
     linkerd.io/extension: multicluster
-    component: service-mirror
+    linkerd.io/control-plane-component: service-mirror
     mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 ---
 apiVersion: apps/v1
@@ -83,22 +83,22 @@ kind: Deployment
 metadata:
   labels:
     linkerd.io/extension: multicluster
-    component: service-mirror
+    linkerd.io/control-plane-component: service-mirror
     mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
   name: linkerd-service-mirror-{{.Values.targetClusterName}}
-  {{ include "partials.namespace" . }}
+  namespace: {{.Values.namespace}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: linkerd-service-mirror
+      linkerd.io/control-plane-component: linkerd-service-mirror
       mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
   template:
     metadata:
       annotations:
         linkerd.io/inject: enabled
       labels:
-        component: linkerd-service-mirror
+        linkerd.io/control-plane-component: linkerd-service-mirror
         mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
     spec:
       containers:
@@ -106,7 +106,7 @@ spec:
         - service-mirror
         - -log-level={{.Values.logLevel}}
         - -event-requeue-limit={{.Values.serviceMirrorRetryLimit}}
-        - -namespace={{.Release.Namespace}}
+        - -namespace={{.Values.namespace}}
         {{- if .Values.enableHeadlessServices }}
         - -enable-headless-services
         {{- end }}
@@ -119,13 +119,4 @@ spec:
         ports:
         - containerPort: 9999
           name: admin-http
-        {{- with .Values.resources }}
-        resources: {{ toYaml . | nindent 10 }}
-        {{- end }}
       serviceAccountName: linkerd-service-mirror-{{.Values.targetClusterName}}
-      {{- with .Values.nodeSelector }}
-      nodeSelector: {{ toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations: {{ toYaml . | nindent 6 }}
-      {{- end }}
