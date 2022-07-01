@@ -13,3 +13,8 @@ kubeVersion: ">=1.17.0-0"
 icon: https://linkerd.io/images/logo-only-200h.png
 name: "linkerd-multicluster-link"
 version: 0.1.0
+restrictions:
+  clusterSingleton: true
+  fixedNamespace: linkerd-multicluster
+annotations:
+  application.giantswarm.io/team: team-cabbage
