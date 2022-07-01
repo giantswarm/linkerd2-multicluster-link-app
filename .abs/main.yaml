@@ -2,3 +2,4 @@ replace-chart-version-with-git: true
 generate-metadata: true
 chart-dir: ./helm/linkerd2-multicluster-source-app
 destination: ./build
+disable-giantswarm-helm-validator: true
