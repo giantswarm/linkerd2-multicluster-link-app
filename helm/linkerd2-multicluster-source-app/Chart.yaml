@@ -11,8 +11,8 @@ description: |
   shouldn't be used as-is unless you really know what you're doing ;-)
 kubeVersion: ">=1.17.0-0"
 icon: https://linkerd.io/images/logo-only-200h.png
-name: "linkerd-multicluster-link"
-version: 0.0.1
+name: "linkerd2-multicluster-source-app"
+version: 0.7.0
 restrictions:
   clusterSingleton: true
   fixedNamespace: linkerd-multicluster
