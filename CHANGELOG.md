@@ -7,11 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-07-04
+
 ## [0.0.1] - 2022-07-01
 
 ### Added
 
 - Add right upstream version.
 
-[Unreleased]: https://github.com/giantswarm/linkerd2-multicluster-source-app/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/linkerd2-multicluster-source-app/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/giantswarm/linkerd2-multicluster-source-app/compare/v0.0.1...v0.7.0
 [0.0.1]: https://github.com/giantswarm/linkerd2-multicluster-source-app/releases/tag/v0.0.1
