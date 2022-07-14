@@ -3,7 +3,7 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: linkerd-multicluster-link-psp-{{.Values.targetClusterName}}
+  name: linkerd-multicluster-link-psp-{{.Values.target.name | default .Values.clusterID}}
   namespace: {{.Values.namespace}}
   labels:
     linkerd.io/extension: multicluster
@@ -14,6 +14,6 @@ roleRef:
   name: psp
 subjects:
 - kind: ServiceAccount
-  name: linkerd-service-mirror-{{.Values.targetClusterName}}
+  name: linkerd-service-mirror-{{.Values.target.name | default .Values.clusterID}}
   namespace: {{.Values.namespace}}
 {{ end -}}

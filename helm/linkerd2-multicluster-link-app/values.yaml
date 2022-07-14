@@ -24,3 +24,15 @@ serviceMirrorUID: 2103
 # set to true on the extension and control plane install. Note PSP has been
 # deprecated since k8s v1.21
 enablePSP: true
+
+# -- Settings needed in order to enable the link to watch services
+target:
+  enabled: false
+  name: "target"
+  api: ""
+  CA: ""
+  token: ""
+  gateway:
+    ip: ""
+    port: "4143"
+    portProbe: "4191"

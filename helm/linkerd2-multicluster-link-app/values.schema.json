@@ -38,6 +38,40 @@
         },
         "serviceMirrorUID": {
             "type": "integer"
+        },
+        "target": {
+            "type": "object",
+            "properties": {
+                "CA": {
+                    "type": "string"
+                },
+                "api": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "gateway": {
+                    "type": "object",
+                    "properties": {
+                        "ip": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "string"
+                        },
+                        "portProbe": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

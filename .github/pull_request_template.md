@@ -14,7 +14,7 @@ This PR:
 
 ### Testing
 
-Description on how linkerd2-multicluster-source-app can be tested.
+Description on how linkerd2-multicluster-link-app can be tested.
 
 - [ ] fresh install works
   - [ ] AWS
@@ -27,7 +27,7 @@ Description on how linkerd2-multicluster-source-app can be tested.
 
 #### Other testing
 
-Description of features to additionally test for linkerd2-multicluster-source-app installations.
+Description of features to additionally test for linkerd2-multicluster-link-app installations.
 
 - [ ] check reconciliation of existing resources after upgrading
 - [ ] X still works after upgrade
