@@ -53,20 +53,20 @@ workload cluster `abc12`:
 apiVersion: application.giantswarm.io/v1alpha1
 kind: App
 metadata:
-  name: linkerd2-multicluster-app
+  name: linkerd2-multicluster-link-app
   namespace: <org_namespace>
 spec:
   catalog: giantswarm
   kubeConfig:
     inCluster: false
-  name: linkerd2-multicluster-app
+  name: linkerd2-multicluster-link-app
   namespace: linkerd-multicluster
   namespaceConfig:
     labels:
       linkerd.io/extension: multicluster
   userConfig:
     configMap:
-      name: linkerd2-multicluster-app-userconfig-<your-cluster-id>
+      name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
       namespace: <your-cluster-id>
   version: 0.7.0
 ```
@@ -88,7 +88,7 @@ data:
         portProbe: "4191"
 kind: ConfigMap
 metadata:
-  name: linkerd2-multicluster-app-userconfig-<your-cluster-id>
+  name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
   namespace: <your-cluster-id>
 ```
 
