@@ -1,11 +1,11 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/linkerd2-multicluster-source-app.svg?style=shield)](https://circleci.com/gh/giantswarm/linkerd2-multicluster-source-app)
+[![CircleCI](https://circleci.com/gh/giantswarm/linkerd2-multicluster-link-app.svg?style=shield)](https://circleci.com/gh/giantswarm/linkerd2-multicluster-link-app)
 
 [Read me after cloning this template (GS staff only)](https://intranet.giantswarm.io/docs/dev-and-releng/app-developer-processes/adding_app_to_appcatalog/)
 
-# linkerd2-multicluster-source-app chart
+# linkerd2-multicluster-link-app chart
 
-Giant Swarm offers a linkerd2-multicluster-source-app App which can be installed in workload clusters.
-Here we define the linkerd2-multicluster-source-app chart with its templates and default configuration.
+Giant Swarm offers a linkerd2-multicluster-link-app App which can be installed in workload clusters.
+Here we define the linkerd2-multicluster-link-app chart with its templates and default configuration.
 
 **What is this app?**
 
@@ -28,7 +28,16 @@ There are several ways to install this app onto a workload cluster.
 
 ```yaml
 # values.yaml
-
+target:
+  enabled: true
+  name: "<cluster-id>"
+  api: "https://api.<cluster-id>.gigantic.io:443"
+  CA: "<cluster-ca-pem>"
+  token: "<my-token>"
+  gateway:
+    ip: "<gateway-ip-of-target-cluster>"
+    port: "4143"
+    portProbe: "4191"
 ```
 
 ### Sample App CR and ConfigMap for the management cluster
@@ -41,12 +50,46 @@ workload cluster `abc12`:
 
 ```yaml
 # appCR.yaml
-
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  name: linkerd2-multicluster-link-app
+  namespace: <org_namespace>
+spec:
+  catalog: giantswarm
+  kubeConfig:
+    inCluster: false
+  name: linkerd2-multicluster-link-app
+  namespace: linkerd-multicluster
+  namespaceConfig:
+    labels:
+      linkerd.io/extension: multicluster
+  userConfig:
+    configMap:
+      name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
+      namespace: <your-cluster-id>
+  version: 0.7.0
 ```
 
 ```yaml
 # user-values-configmap.yaml
-
+apiVersion: v1
+data:
+  values: |
+    target:
+      enabled: true
+      name: "<cluster-id>"
+      api: "https://api.<cluster-id>.gigantic.io:443"
+      CA: "<cluster-ca-pem>"
+      token: "<my-token>"
+      gateway:
+        ip: "<gateway-ip-of-target-cluster>"
+        port: "4143"
+        portProbe: "4191"
+kind: ConfigMap
+metadata:
+  name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
+  namespace: <your-cluster-id>
 ```
 
 See our [full reference on how to configure apps](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
@@ -66,4 +109,4 @@ Not following these limitations will most likely result in a broken deployment.
 
 ## Credit
 
-- linkerd2-multicluster-source-app
+- linkerd2-multicluster-link-app
