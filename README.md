@@ -28,7 +28,16 @@ There are several ways to install this app onto a workload cluster.
 
 ```yaml
 # values.yaml
-
+target:
+  enabled: true
+  name: "<cluster-id>"
+  api: "https://api.<cluster-id>.gigantic.io:443"
+  CA: "<cluster-ca-pem>"
+  token: "<my-token>"
+  gateway:
+    ip: "<gateway-ip-of-target-cluster>"
+    port: "4143"
+    portProbe: "4191"
 ```
 
 ### Sample App CR and ConfigMap for the management cluster
@@ -59,15 +68,28 @@ spec:
     configMap:
       name: linkerd2-multicluster-app-userconfig-<your-cluster-id>
       namespace: <your-cluster-id>
-    secret:
-      name: linkerd2-multicluster-app-userconfig-<your-cluster-id>
-      namespace: <your-cluster-id>
   version: 0.7.0
 ```
 
 ```yaml
 # user-values-configmap.yaml
-
+apiVersion: v1
+data:
+  values: |
+    target:
+      enabled: true
+      name: "<cluster-id>"
+      api: "https://api.<cluster-id>.gigantic.io:443"
+      CA: "<cluster-ca-pem>"
+      token: "<my-token>"
+      gateway:
+        ip: "<gateway-ip-of-target-cluster>"
+        port: "4143"
+        portProbe: "4191"
+kind: ConfigMap
+metadata:
+  name: linkerd2-multicluster-app-userconfig-<your-cluster-id>
+  namespace: <your-cluster-id>
 ```
 
 See our [full reference on how to configure apps](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
