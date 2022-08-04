@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Encode in base64 the CA on the kubeconfig link.
+
 ## [0.7.0] - 2022-07-14
 
 - Add first version of the Linkerd multicluster link chart.
