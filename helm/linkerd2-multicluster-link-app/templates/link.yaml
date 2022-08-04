@@ -5,46 +5,46 @@ stringData:
     apiVersion: v1
     clusters:
     - cluster:
-        certificate-authority-data: {{ .Values.target.CA}}
-        server: {{ .Values.target.api}}
-      name: {{.Values.target.name | default .Values.clusterID}}
+        certificate-authority-data: {{ .Values.target.CA | b64enc }}
+        server: {{ .Values.target.api }}
+      name: {{ .Values.target.name | default .Values.clusterID }}
     contexts:
     - context:
-        cluster: {{.Values.target.name | default .Values.clusterID}}
+        cluster: {{ .Values.target.name | default .Values.clusterID }}
         user: linkerd-service-mirror-remote-access-default
-      name: {{.Values.target.name | default .Values.clusterID}}
-    current-context: {{.Values.target.name | default .Values.clusterID}}
+      name: {{ .Values.target.name | default .Values.clusterID }}
+    current-context: {{ .Values.target.name | default .Values.clusterID }}
     kind: Config
     preferences: {}
     users:
     - name: linkerd-service-mirror-remote-access-default
       user:
-        token: {{.Values.target.token}}
+        token: {{ .Values.target.token }}
 kind: Secret
 metadata:
-  name: cluster-credentials-{{.Values.target.name | default .Values.clusterID}}
-  namespace: {{.Values.namespace}}
+  name: cluster-credentials-{{ .Values.target.name | default .Values.clusterID }}
+  namespace: {{ .Values.namespace }}
 type: mirror.linkerd.io/remote-kubeconfig
 ---
 apiVersion: multicluster.linkerd.io/v1alpha1
 kind: Link
 metadata:
-  name: {{.Values.target.name | default .Values.clusterID}}
-  namespace: {{.Values.namespace}}
+  name: {{ .Values.target.name | default .Values.clusterID }}
+  namespace: {{ .Values.namespace }}
 spec:
-  clusterCredentialsSecret: cluster-credentials-{{.Values.target.name | default .Values.clusterID}}
-  gatewayAddress: {{.Values.target.gateway.ip | quote}}
+  clusterCredentialsSecret: cluster-credentials-{{.Values.target.name | default .Values.clusterID }}
+  gatewayAddress: {{ .Values.target.gateway.ip | quote }}
   gatewayIdentity: linkerd-gateway.linkerd-multicluster.serviceaccount.identity.linkerd.cluster.local
-  gatewayPort: {{.Values.target.gateway.port | quote}}
+  gatewayPort: {{ .Values.target.gateway.port | quote }}
   probeSpec:
     path: /ready
     period: 3s
-    port: {{.Values.target.gateway.portProbe | quote}}
+    port: {{ .Values.target.gateway.portProbe | quote }}
   selector:
     matchExpressions:
     - key: mirror.linkerd.io/exported
       operator: Exists
   targetClusterDomain: cluster.local
   targetClusterLinkerdNamespace: linkerd
-  targetClusterName: {{.Values.target.name | default .Values.clusterID}}
+  targetClusterName: {{ .Values.target.name | default .Values.clusterID }}
 {{ end }}
