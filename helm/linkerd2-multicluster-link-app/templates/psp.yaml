@@ -14,6 +14,6 @@ roleRef:
   name: psp
 subjects:
 - kind: ServiceAccount
-  name: linkerd-service-mirror-{{.Values.target.name | default .Values.clusterID}}
+  name: {{ include "linkerd-service-mirror.serviceAccountName" . }}
   namespace: {{.Values.namespace}}
 {{ end -}}

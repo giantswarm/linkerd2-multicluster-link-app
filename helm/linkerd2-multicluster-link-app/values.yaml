@@ -19,6 +19,13 @@ serviceMirrorRetryLimit: 3
 # -- User id under which the Service Mirror shall be ran
 serviceMirrorUID: 2103
 
+# -- Settings for service account creation.
+serviceAccount:
+  # -- Whether to create a service account or use a pre-created one.
+  create: true
+  # -- Name of the (pre-)created service account.
+  name: ""
+
 # -- Create RoleBindings to associate ServiceAccount of target cluster Service
 # Mirror to the control plane PSP resource. This requires that `enabledPSP` is
 # set to true on the extension and control plane install. Note PSP has been
