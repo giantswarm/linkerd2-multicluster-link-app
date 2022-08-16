@@ -67,7 +67,7 @@ subjects:
   - kind: ServiceAccount
     name: {{ include "linkerd-service-mirror.serviceAccountName" . }}
     namespace: {{.Values.namespace}}
-{{- if .Values.serviceAccount.create -}}
+{{- if .Values.serviceAccount.create }}
 ---
 kind: ServiceAccount
 apiVersion: v1
