@@ -85,7 +85,7 @@ metadata:
     linkerd.io/extension: multicluster
     linkerd.io/control-plane-component: service-mirror
     mirror.linkerd.io/cluster-name: {{.Values.target.name | default .Values.clusterID}}
-  name: {{ include "linkerd-service-mirror.serviceAccountName" . }}
+  name: linkerd-service-mirror-{{.Values.target.name | default .Values.clusterID}}
   namespace: {{.Values.namespace}}
 spec:
   replicas: 1
