@@ -33,6 +33,17 @@
         "namespace": {
             "type": "string"
         },
+        "serviceAccount": {
+            "type": "object",
+            "properties": {
+                "create": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "serviceMirrorRetryLimit": {
             "type": "integer"
         },
