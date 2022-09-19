@@ -1,8 +1,8 @@
 # -- Docker image for the Service mirror component (uses the Linkerd controller
 # image)
-controllerImage: cr.l5d.io/linkerd/controller
+controllerImage: quay.io/giantswarm/linkerd2-controller
 # -- Tag for the Service Mirror container Docker image
-controllerImageVersion: linkerdVersionValue
+controllerImageVersion: stable-2.11.4
 # -- Toggle support for mirroring headless services
 enableHeadlessServices: false
 gateway:
@@ -19,8 +19,27 @@ serviceMirrorRetryLimit: 3
 # -- User id under which the Service Mirror shall be ran
 serviceMirrorUID: 2103
 
+# -- Settings for service account creation.
+serviceAccount:
+  # -- Whether to create a service account or use a pre-created one.
+  create: true
+  # -- Name of the (pre-)created service account.
+  name: ""
+
 # -- Create RoleBindings to associate ServiceAccount of target cluster Service
 # Mirror to the control plane PSP resource. This requires that `enabledPSP` is
 # set to true on the extension and control plane install. Note PSP has been
 # deprecated since k8s v1.21
-enablePSP: false 
+enablePSP: true
+
+# -- Settings needed in order to enable the link to watch services
+target:
+  enabled: false
+  name: "target"
+  api: ""
+  CA: ""
+  token: ""
+  gateway:
+    ip: ""
+    port: "4143"
+    portProbe: "4191"
