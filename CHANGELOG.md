@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+Upgrade app version to 2.11.4
+
 ## [0.7.2] - 2022-08-16
 
 - Make service account configurable.
