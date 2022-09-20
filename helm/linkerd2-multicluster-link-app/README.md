@@ -11,7 +11,7 @@ shouldn't be used as-is unless you really know what you're doing ;-)
 
 ![Version: 0.7.2](https://img.shields.io/badge/Version-0.7.2-informational?style=flat-square)
 
-![AppVersion: stable-2.11.2](https://img.shields.io/badge/AppVersion-stable--2.11.2-informational?style=flat-square)
+![AppVersion: stable-2.11.4](https://img.shields.io/badge/AppVersion-stable--2.11.4-informational?style=flat-square)
 
 ## Requirements
 
@@ -22,7 +22,7 @@ Kubernetes: `>=1.17.0-0`
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | controllerImage | string | `"quay.io/giantswarm/linkerd2-controller"` | Docker image for the Service mirror component (uses the Linkerd controller image) |
-| controllerImageVersion | string | `"stable-2.11.2"` | Tag for the Service Mirror container Docker image |
+| controllerImageVersion | string | `"stable-2.11.4"` | Tag for the Service Mirror container Docker image |
 | enableHeadlessServices | bool | `false` | Toggle support for mirroring headless services |
 | enablePSP | bool | `true` | Create RoleBindings to associate ServiceAccount of target cluster Service Mirror to the control plane PSP resource. This requires that `enabledPSP` is set to true on the extension and control plane install. Note PSP has been deprecated since k8s v1.21 |
 | gateway.probe.port | int | `4191` | The port used for liveliness probing |
