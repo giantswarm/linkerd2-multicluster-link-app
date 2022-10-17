@@ -27,6 +27,14 @@
                 }
             }
         },
+        "image": {
+            "type": "object",
+            "properties": {
+                "registry": {
+                    "type": "string"
+                }
+            }
+        },
         "logLevel": {
             "type": "string"
         },

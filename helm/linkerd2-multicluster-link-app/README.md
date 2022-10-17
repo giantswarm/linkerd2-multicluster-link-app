@@ -21,7 +21,7 @@ Kubernetes: `>=1.17.0-0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| controllerImage | string | `"quay.io/giantswarm/linkerd2-controller"` | Docker image for the Service mirror component (uses the Linkerd controller image) |
+| controllerImage | string | `"giantswarm/linkerd2-controller"` | Docker image for the Service mirror component (uses the Linkerd controller image) |
 | controllerImageVersion | string | `"stable-2.11.4"` | Tag for the Service Mirror container Docker image |
 | enableHeadlessServices | bool | `false` | Toggle support for mirroring headless services |
 | enablePSP | bool | `true` | Create RoleBindings to associate ServiceAccount of target cluster Service Mirror to the control plane PSP resource. This requires that `enabledPSP` is set to true on the extension and control plane install. Note PSP has been deprecated since k8s v1.21 |
