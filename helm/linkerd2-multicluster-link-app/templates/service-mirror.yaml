@@ -114,7 +114,7 @@ spec:
         {{- end }}
         - -enable-pprof={{.Values.enablePprof | default false}}
         - {{.Values.target.name | default .Values.clusterID}}
-        image: {{.Values.controllerImage}}:{{.Values.controllerImageVersion}}
+        image: "{{.Values.image.registry}}/{{.Values.controllerImage}}:{{.Values.controllerImageVersion}}"
         name: service-mirror
         securityContext:
           runAsUser: {{.Values.serviceMirrorUID}}
