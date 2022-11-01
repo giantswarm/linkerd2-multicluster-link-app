@@ -112,7 +112,7 @@ spec:
         - -enable-headless-services
         {{- end }}
         - -enable-pprof={{.Values.enablePprof | default false}}
-        - {{.Values.target.name | default .Values.clusterID}}
+        - {{.Values.targetClusterName}}
         image: "{{.Values.image.registry}}/{{.Values.controllerImage}}:{{.Values.controllerImageVersion}}"
         name: service-mirror
         securityContext:
