@@ -38,19 +38,11 @@
         "logLevel": {
             "type": "string"
         },
-        "namespace": {
-            "type": "string"
+        "nodeSelector": {
+            "type": "object"
         },
-        "serviceAccount": {
-            "type": "object",
-            "properties": {
-                "create": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
+        "resources": {
+            "type": "object"
         },
         "serviceMirrorRetryLimit": {
             "type": "integer"
@@ -84,13 +76,16 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string"
-                },
                 "token": {
                     "type": "string"
                 }
             }
+        },
+        "targetClusterName": {
+            "type": "string"
+        },
+        "tolerations": {
+            "type": "object"
         }
     }
 }

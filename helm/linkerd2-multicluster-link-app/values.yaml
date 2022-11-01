@@ -6,29 +6,28 @@ image:
 # image)
 controllerImage: giantswarm/linkerd2-controller
 # -- Tag for the Service Mirror container Docker image
-controllerImageVersion: stable-2.11.4
+controllerImageVersion: stable-2.12.2
 # -- Toggle support for mirroring headless services
 enableHeadlessServices: false
 gateway:
   probe:
     # -- The port used for liveliness probing
     port: 4191
-# -- Service Mirror component namespace
-namespace: linkerd-multicluster
 # -- Log level for the Multicluster components
 logLevel: info
+# -- Node selectors for the Service mirror pod
+nodeSelector: {}
+# -- Resources for the Service mirror container
+resources: {}
 # -- Number of times update from the remote cluster is allowed to be requeued
 # (retried)
 serviceMirrorRetryLimit: 3
 # -- User id under which the Service Mirror shall be ran
 serviceMirrorUID: 2103
-
-# -- Settings for service account creation.
-serviceAccount:
-  # -- Whether to create a service account or use a pre-created one.
-  create: true
-  # -- Name of the (pre-)created service account.
-  name: ""
+# -- Name of the target cluster that's going to be linked
+targetClusterName: ""
+# -- Tolerations for the Service mirror pod
+tolerations: {}
 
 # -- Create RoleBindings to associate ServiceAccount of target cluster Service
 # Mirror to the control plane PSP resource. This requires that `enabledPSP` is
@@ -39,7 +38,6 @@ enablePSP: true
 # -- Settings needed in order to enable the link to watch services
 target:
   enabled: false
-  name: "target"
   api: ""
   CA: ""
   token: ""

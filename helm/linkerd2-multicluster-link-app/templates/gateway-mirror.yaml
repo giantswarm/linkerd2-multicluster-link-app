@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: probe-gateway-{{.Values.target.name | default .Values.clusterID}}
-  namespace: {{.Values.namespace}}
+  name: probe-gateway-{{.Values.targetClusterName}}
+  namespace: {{ .Release.Namespace }}
   labels:
     mirror.linkerd.io/mirrored-gateway: "true"
-    mirror.linkerd.io/cluster-name: {{.Values.target.name | default .Values.clusterID}}
+    mirror.linkerd.io/cluster-name: {{.Values.targetClusterName}}
 spec:
   ports:
   - name: mc-probe

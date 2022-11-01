@@ -1,0 +1,11 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: introduce link in linkerd-multicluster-link chart
+      sha: a1e2f22a16377bcee8a5e5e82d74fcfda4e2c018
+      tags:
+      - stable-2.10.1-2142-ga1e2f22a1
+    path: linkerd
+  path: vendor
+kind: LockConfig

@@ -7,13 +7,13 @@ stringData:
     - cluster:
         certificate-authority-data: {{ .Values.target.CA | b64enc }}
         server: {{ .Values.target.api }}
-      name: {{ .Values.target.name | default .Values.clusterID }}
+      name: {{ .Values.targetClusterName }}
     contexts:
     - context:
-        cluster: {{ .Values.target.name | default .Values.clusterID }}
+        cluster: {{ .Values.targetClusterName }}
         user: linkerd-service-mirror-remote-access-default
-      name: {{ .Values.target.name | default .Values.clusterID }}
-    current-context: {{ .Values.target.name | default .Values.clusterID }}
+      name: {{ .Values.targetClusterName }}
+    current-context: {{ .Values.targetClusterName }}
     kind: Config
     preferences: {}
     users:
@@ -22,17 +22,17 @@ stringData:
         token: {{ .Values.target.token }}
 kind: Secret
 metadata:
-  name: cluster-credentials-{{ .Values.target.name | default .Values.clusterID }}
-  namespace: {{ .Values.namespace }}
+  name: cluster-credentials-{{.Values.targetClusterName}}
+  namespace: {{ .Release.Namespace }}
 type: mirror.linkerd.io/remote-kubeconfig
 ---
 apiVersion: multicluster.linkerd.io/v1alpha1
 kind: Link
 metadata:
-  name: {{ .Values.target.name | default .Values.clusterID }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.targetClusterName }}
+  namespace: {{ .Release.Namespace }}
 spec:
-  clusterCredentialsSecret: cluster-credentials-{{.Values.target.name | default .Values.clusterID }}
+  clusterCredentialsSecret: cluster-credentials-{{.Values.targetClusterName}}
   gatewayAddress: {{ .Values.target.gateway.ip | quote }}
   gatewayIdentity: linkerd-gateway.linkerd-multicluster.serviceaccount.identity.linkerd.cluster.local
   gatewayPort: {{ .Values.target.gateway.port | quote }}
@@ -46,5 +46,5 @@ spec:
       operator: Exists
   targetClusterDomain: cluster.local
   targetClusterLinkerdNamespace: linkerd
-  targetClusterName: {{ .Values.target.name | default .Values.clusterID }}
+  targetClusterName: {{ .Values.targetClusterName }}
 {{ end }}

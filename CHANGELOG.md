@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Upgrade to 2.12.2 ([#20](https://github.com/giantswarm/linkerd2-multicluster-link-app/pull/20)
 - Add image registry switch to automatically switch the used image registry based on the installation region
 
 ## [0.8.0] - 2022-09-21
