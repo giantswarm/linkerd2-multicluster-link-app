@@ -28,9 +28,9 @@ There are several ways to install this app onto a workload cluster.
 
 ```yaml
 # values.yaml
+targetClusterName: "<cluster-id>"
 target:
   enabled: true
-  name: "<cluster-id>"
   api: "https://api.<cluster-id>.gigantic.io:443"
   CA: "<cluster-ca-pem>"
   token: "<my-token>"
@@ -76,9 +76,9 @@ spec:
 apiVersion: v1
 data:
   values: |
+    targetClusterName: "<cluster-id>"
     target:
       enabled: true
-      name: "<cluster-id>"
       api: "https://api.<cluster-id>.gigantic.io:443"
       CA: "<cluster-ca-pem>"
       token: "<my-token>"
@@ -93,6 +93,10 @@ metadata:
 ```
 
 See our [full reference on how to configure apps](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
+
+## Breaking changes
+
+- In version 0.9.0 and above the value `target.name` has been deprecated and replaced with `targetClusterName` to follow the upstream chart behavior.
 
 ## Compatibility
 
