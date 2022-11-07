@@ -1,11 +1,11 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/linkerd2-multicluster-link-app.svg?style=shield)](https://circleci.com/gh/giantswarm/linkerd2-multicluster-link-app)
+[![CircleCI](https://circleci.com/gh/giantswarm/linkerd-multicluster-link.svg?style=shield)](https://circleci.com/gh/giantswarm/linkerd-multicluster-link)
 
 [Read me after cloning this template (GS staff only)](https://intranet.giantswarm.io/docs/dev-and-releng/app-developer-processes/adding_app_to_appcatalog/)
 
-# linkerd2-multicluster-link-app chart
+# linkerd-multicluster-link chart
 
-Giant Swarm offers a linkerd2-multicluster-link-app App which can be installed in workload clusters.
-Here we define the linkerd2-multicluster-link-app chart with its templates and default configuration.
+Giant Swarm offers a linkerd-multicluster-link App which can be installed in workload clusters.
+Here we define the linkerd-multicluster-link chart with its templates and default configuration.
 
 **What is this app?**
 
@@ -53,22 +53,22 @@ workload cluster `abc12`:
 apiVersion: application.giantswarm.io/v1alpha1
 kind: App
 metadata:
-  name: linkerd2-multicluster-link-app
+  name: linkerd-multicluster-link
   namespace: <org_namespace>
 spec:
   catalog: giantswarm
   kubeConfig:
     inCluster: false
-  name: linkerd2-multicluster-link-app
+  name: linkerd-multicluster-link
   namespace: linkerd-multicluster
   namespaceConfig:
     labels:
       linkerd.io/extension: multicluster
   userConfig:
     configMap:
-      name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
+      name: linkerd-multicluster-link-userconfig-<your-cluster-id>
       namespace: <your-cluster-id>
-  version: 0.7.1
+  version: 0.8.0
 ```
 
 ```yaml
@@ -88,7 +88,7 @@ data:
         portProbe: "4191"
 kind: ConfigMap
 metadata:
-  name: linkerd2-multicluster-link-app-userconfig-<your-cluster-id>
+  name: linkerd-multicluster-link-userconfig-<your-cluster-id>
   namespace: <your-cluster-id>
 ```
 
@@ -113,4 +113,4 @@ Not following these limitations will most likely result in a broken deployment.
 
 ## Credit
 
-- linkerd2-multicluster-link-app
+- linkerd-multicluster-link
