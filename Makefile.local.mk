@@ -1,6 +1,6 @@
 ##@ Chart
 
-MAIN_CHART=helm/linkerd2-multicluster-link-app
+MAIN_CHART=helm/linkerd-multicluster-link
 VENDOR_CHART_MULTICLUSTER=vendor/linkerd/multicluster/charts/linkerd-multicluster-link
 VENDOR_CHART_PARTIALS=vendor/linkerd/charts/partials
 
