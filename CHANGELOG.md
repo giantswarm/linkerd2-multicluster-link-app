@@ -9,20 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update icon URL in `Chart.yaml` to self-hosted
+- Upgrade linkerd to v2.12.4.
+- Update icon URL in `Chart.yaml` to self-hosted.
 
 ## [0.9.0] - 2022-11-07
 
 ### Changed
 
-- Upgrade to 2.12.2 ([#20](https://github.com/giantswarm/linkerd2-multicluster-link-app/pull/20)
-- Add image registry switch to automatically switch the used image registry based on the installation region
+- Upgrade to 2.12.2 ([#20](https://github.com/giantswarm/linkerd2-multicluster-link-app/pull/20).
+- Add image registry switch to automatically switch the used image registry based on the installation region.
 
 ## [0.8.0] - 2022-09-21
 
 ### Changed
 
-Upgrade app version to 2.11.4
+Upgrade app version to 2.11.4.
 
 ## [0.7.2] - 2022-08-16
 

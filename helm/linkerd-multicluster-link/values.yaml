@@ -6,7 +6,7 @@ image:
 # image)
 controllerImage: giantswarm/linkerd2-controller
 # -- Tag for the Service Mirror container Docker image
-controllerImageVersion: stable-2.12.2
+controllerImageVersion: stable-2.12.4
 # -- Toggle support for mirroring headless services
 enableHeadlessServices: false
 gateway:
