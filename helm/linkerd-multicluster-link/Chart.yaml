@@ -13,7 +13,7 @@ kubeVersion: ">=1.21.0-0"
 dependencies:
   - name: partials
     version: 0.1.0
-icon: https://s.giantswarm.io/app-icons/linkerd2/2/logo_dark.svg
+icon: https://s.giantswarm.io/app-icons/linkerd2/2/icon_dark.svg
 name: "linkerd-multicluster-link"
 version: 0.10.0
 restrictions:
@@ -21,3 +21,4 @@ restrictions:
   fixedNamespace: linkerd-multicluster
 annotations:
   application.giantswarm.io/team: team-cabbage
+  ui.giantswarm.io/logo: https://s.giantswarm.io/app-icons/linkerd2/2/logo_dark.svg
