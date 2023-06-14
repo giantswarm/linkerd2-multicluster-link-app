@@ -9,9 +9,9 @@ multicluster link` CLI command, which also produces the
 chart. Therefore this chart is not a replacement for that command, and
 shouldn't be used as-is unless you really know what you're doing ;-)
 
-![Version: 0.9.0](https://img.shields.io/badge/Version-0.9.0-informational?style=flat-square)
+![Version: 0.10.0](https://img.shields.io/badge/Version-0.10.0-informational?style=flat-square)
 
-![AppVersion: stable-2.12.2](https://img.shields.io/badge/AppVersion-stable--2.12.2-informational?style=flat-square)
+![AppVersion: stable-2.13.4](https://img.shields.io/badge/AppVersion-stable--2.13.4-informational?style=flat-square)
 
 ## Requirements
 
@@ -25,14 +25,17 @@ Kubernetes: `>=1.21.0-0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| commonLabels | object | `{"application.giantswarm.io/team":"cabbage","giantswarm.io/service-type":"managed"}` | Labels to apply to all resources |
 | controllerImage | string | `"giantswarm/linkerd2-controller"` | Docker image for the Service mirror component (uses the Linkerd controller image) |
-| controllerImageVersion | string | `"stable-2.12.2"` | Tag for the Service Mirror container Docker image |
+| controllerImageVersion | string | `"stable-2.13.4"` | Tag for the Service Mirror container Docker image |
 | enableHeadlessServices | bool | `false` | Toggle support for mirroring headless services |
 | enablePSP | bool | `true` | Create RoleBindings to associate ServiceAccount of target cluster Service Mirror to the control plane PSP resource. This requires that `enabledPSP` is set to true on the extension and control plane install. Note PSP has been deprecated since k8s v1.21 |
 | gateway.probe.port | int | `4191` | The port used for liveliness probing |
 | image | object | `{"registry":"quay.io"}` | Registry switch Do not overwrite this as it is automatically set based on the installation region |
 | logLevel | string | `"info"` | Log level for the Multicluster components |
 | nodeSelector | object | `{}` | Node selectors for the Service mirror pod |
+| podAnnotations | object | `{}` | Additional annotations to add to all pods |
+| podLabels | object | `{}` | Additional labels to add to all pods |
 | resources | object | `{}` | Resources for the Service mirror container |
 | serviceMirrorRetryLimit | int | `3` | Number of times update from the remote cluster is allowed to be requeued (retried) |
 | serviceMirrorUID | int | `2103` | User id under which the Service Mirror shall be ran |
