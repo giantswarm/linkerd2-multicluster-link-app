@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: Merge tag 'refs/tags/stable-2.12.4' into upgrade-2.12.4...
-      sha: 6a3b38f5edf1aa4781ad1b60f899bba020b47b44
+      commitTitle: introduce link in linkerd-multicluster-link chart
+      sha: 55eda6168b8fe5b291bd9cbb3d53cb0c8d4794cc
       tags:
-      - stable-2.10.1-2189-g6a3b38f5e
+      - stable-2.10.1-2936-g55eda6168
     path: linkerd
   path: vendor
 - contents:
