@@ -2,6 +2,9 @@
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
     "properties": {
+        "commonLabels": {
+            "type": "object"
+        },
         "controllerImage": {
             "type": "string"
         },
@@ -39,6 +42,12 @@
             "type": "string"
         },
         "nodeSelector": {
+            "type": "object"
+        },
+        "podAnnotations": {
+            "type": "object"
+        },
+        "podLabels": {
             "type": "object"
         },
         "resources": {
