@@ -15,7 +15,7 @@ dependencies:
     version: 0.1.0
 icon: https://s.giantswarm.io/app-icons/linkerd2/2/icon_dark.svg
 name: "linkerd-multicluster-link"
-version: 0.11.0
+version: 0.11.1
 restrictions:
   clusterSingleton: false
   fixedNamespace: linkerd-multicluster
