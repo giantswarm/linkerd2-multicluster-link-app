@@ -31,7 +31,7 @@ Kubernetes: `>=1.21.0-0`
 | enableHeadlessServices | bool | `false` | Toggle support for mirroring headless services |
 | enablePSP | bool | `true` | Create RoleBindings to associate ServiceAccount of target cluster Service Mirror to the control plane PSP resource. This requires that `enabledPSP` is set to true on the extension and control plane install. Note PSP has been deprecated since k8s v1.21 |
 | gateway.probe.port | int | `4191` | The port used for liveliness probing |
-| image | object | `{"registry":"quay.io"}` | Registry switch Do not overwrite this as it is automatically set based on the installation region |
+| image | object | `{"registry":"gsoci.azurecr.io"}` | Registry switch Do not overwrite this as it is automatically set based on the installation region |
 | logLevel | string | `"info"` | Log level for the Multicluster components |
 | nodeSelector | object | `{}` | Node selectors for the Service mirror pod |
 | podAnnotations | object | `{}` | Additional annotations to add to all pods |
